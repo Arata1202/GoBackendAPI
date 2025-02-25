@@ -17,7 +17,7 @@ type EmailRequestBody struct {
 }
 
 func sendEmail(emailTo, emailFrom, smtpUser, smtpPass, userEmail, title, message string) error {
-	baseTitle := os.Getenv("BASE_TITLE")
+	baseTitle := os.Getenv("BASE_TITLE_TEST")
 	from := fmt.Sprintf("\"%s\" <%s>", baseTitle, emailFrom)
 
 	var builder strings.Builder
@@ -42,7 +42,7 @@ func sendEmail(emailTo, emailFrom, smtpUser, smtpPass, userEmail, title, message
 }
 
 func SendEmailHandler(w http.ResponseWriter, r *http.Request) {
-	originUrl := os.Getenv("ORIGIN_URL")
+	originUrl := os.Getenv("ORIGIN_URL_TEST")
 	w.Header().Set("Access-Control-Allow-Origin", originUrl)
 	w.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS")
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")

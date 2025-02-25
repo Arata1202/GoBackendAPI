@@ -41,7 +41,7 @@ func verifyRecaptcha(response, secret string) (bool, error) {
 }
 
 func RecaptchaHandler(w http.ResponseWriter, r *http.Request) {
-	originURL := os.Getenv("ORIGIN_URL")
+	originURL := os.Getenv("ORIGIN_URL_TEST")
 	w.Header().Set("Access-Control-Allow-Origin", originURL)
 	w.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS")
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
@@ -70,7 +70,7 @@ func RecaptchaHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	secret := os.Getenv("RECAPTCHA_SECRET_KEY")
+	secret := os.Getenv("RECAPTCHA_SECRET_KEY_TEST")
 	if secret == "" {
 		http.Error(w, "reCAPTCHA secret not set", http.StatusInternalServerError)
 		return
